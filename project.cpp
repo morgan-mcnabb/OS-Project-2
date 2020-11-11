@@ -44,47 +44,6 @@ void populate_shrubberies(shrubbery shrubberies[])
     } 
 }
 
-// function: knight_function
-// -------------------------
-// the function that all knight processes (3 in this case)
-// will call. this function judges the shrubberies sent
-// down the pipe and determines whether the shrubberies
-// are worth planting.
-//
-// @param knight: the identifier of the knight that is using 
-//                the function
-//
-// @returns: nothing
-void knight_function(int knight)
-{
-    int planted_shrubberies = 0;
-    // create the signal action that will change the behavior
-    // when this process receives a SIGUSR2 signal
-   // struct sigaction sa;
-   // sa.sa_flags = SA_SIGINFO | SA_RESTART;
-   // sigemptyset(&sa.sa_mask);
-   // sa.sa_sigaction = (void (*)(int, siginfo_t*, void*)) knight_handler;
-   // if(sigaction(SIGUSR2, &sa, NULL) == -1)
-   // {
-   //     perror("Bad sigaction.");
-   //     exit(EXIT_FAILURE);
-   // }
-    
-    // data to be used sending messages
-   // shrubbery s;
-   // message msg;
-   // msg.from = knight;
-   // std::string payload;
-   // const int HISTORIAN_PIPE_WRITE = 2 * HISTORIAN + WRITE;
-
-   // // data to be used for receiving messages
-   // int cost_threshold = rand() % 10 + 1;
-   // int pipe_index = 2*(knight);
-
-    // while there is data in the pipe buffer
-
-    // enqeue and dequeue messages here
-}
 
 //// function: historian_function
 //// ----------------------------
