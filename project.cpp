@@ -103,9 +103,8 @@ void arthur_function()
     pthread_t knights[NUM_KNIGHTS];
     shrubbery shrubs[NUM_KNIGHTS];
     populate_shrubberies(shrubs);
-
-    int rc;
     
+    int rc;
     // spawn the knights
     for(int i = 0; i < NUM_KNIGHTS; i++)
     {

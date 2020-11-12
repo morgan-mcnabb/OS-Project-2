@@ -27,6 +27,7 @@ class SafeQueue
     private:
         std::queue<T> communication_queue;
         pthread_mutex_t lock;
+        pthread_cond_t cond;
         sem_t semaphore;
 
     public:
