@@ -188,11 +188,14 @@ void send_message()
     // 0 = nice, 0 = cost, -1 = index
     // -1 signifies that this is the last shrubbery
     shrubbery shrub = {0, 0, -1};
+    message msg = {-1, "It can't be done!"};
 
+    historian_queue.enqueue(msg);
     for(int i = 0; i < NUM_KNIGHTS; i++)
     {
         knight_queue[i].enqueue(shrub);
     }
+    
 }
 
 
