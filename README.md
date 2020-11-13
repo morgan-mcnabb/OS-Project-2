@@ -18,7 +18,3 @@
   >a. the Knight plants its 100th shrubbery—signal Arthur with SIGUSR1
   
   >b. the Knight reads the “It can’t be done!” message from Arthur
-
-## Issues
-The main issue that is occurring is that the sending of shrubberies works fine, but the Knight rarely receives messages from Arthur. I think there is
-a deadlock/livelock/starvation error occurring but I don't have the experience necessary to look at it and be able to tell.
