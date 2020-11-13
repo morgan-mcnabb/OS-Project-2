@@ -1,3 +1,11 @@
+/////////////////////////////////////////////
+//  Author: Morgan McNabb
+//  File: SafeQueue.h
+//  Class: CSCI-4727-940 Operating Systems
+//  Due Date: November 30, 2020
+//  Start Date: November 11, 2020
+//  Last Updated: November 13, 2020
+////////////////////////////////////////////
 #ifndef __SAFEQUEUE_H
 #define __SAFEQUEUE_H
 
@@ -27,13 +35,13 @@ class SafeQueue
     private:
         std::queue<T> communication_queue;
         pthread_mutex_t lock;
-        pthread_cond_t cond;
         sem_t semaphore;
 
     public:
         SafeQueue();
         void enqueue(T message);
         T dequeue();
+        void producer_done();
 };
 
 #endif

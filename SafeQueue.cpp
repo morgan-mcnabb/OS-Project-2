@@ -1,4 +1,13 @@
+//////////////////////////////////////////////
+//  Author: Morgan McNabb
+//  File: SafeQueue.cpp
+//  Class: CSCI-4727-940 Operating Systems
+//  Due Date: November 30, 2020
+//  Start Date: November 11, 2020
+//  Last Updated: November 13, 2020
+//////////////////////////////////////////////
 #include "SafeQueue.h"
+#include <iostream>
 
 
     template <class T>
@@ -6,37 +15,33 @@ SafeQueue<T>::SafeQueue()
 {
     sem_init(&semaphore, 0, 0);
     pthread_mutex_init(&lock, NULL);
-    pthread_cond_init(&cond, NULL);
 }
-
-    template <class T> 
+    
+    template <class T>
 void SafeQueue<T>::enqueue(T message)
 {
     pthread_mutex_lock(&lock);
 
     communication_queue.push(message);
 
-    pthread_cond_signal(&cond);
-
     pthread_mutex_unlock(&lock);
+    sem_post(&semaphore);
 }
 
     template <class T>
 T SafeQueue<T>::dequeue()
 {
+    sem_wait(&semaphore);
     pthread_mutex_lock(&lock);
-
-    while(communication_queue.empty())
-        pthread_cond_wait(&cond, &lock);
-
-
-    T dequeued_message = communication_queue.front();
+    
+    T data = communication_queue.front();
     communication_queue.pop();
 
     pthread_mutex_unlock(&lock);
 
-    return dequeued_message;
+    return data;
 }
+
 
 template class SafeQueue<message>;
 template class SafeQueue<shrubbery>;
